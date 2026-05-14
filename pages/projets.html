@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projets — Alimatou Sadiya Diouf</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+    <nav id="navbar">
+        <a class="nav-logo" href="../index.html">Alimatou Sadiya DIOUF</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../pages/apropos.html">À Propos</a></li>
+            <li><a href="../pages/competences.html">Compétences</a></li>
+            <li><a href="../pages/projets.html" class="active">Projets</a></li>
+            <li><a href="../pages/temoignages.html">Témoignages</a></li>
+            <li><a href="../pages/contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" aria-label="Fermer">✕</button>
+        <a href="../index.html">Accueil</a>
+        <a href="../pages/apropos.html">À Propos</a>
+        <a href="../pages/competences.html">Compétences</a>
+        <a href="../pages/projets.html">Projets</a>
+        <a href="../pages/temoignages.html">Témoignages</a>
+        <a href="../pages/contact.html">Contact</a>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       HERO PAGE
+  ══════════════════════════════════════ -->
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <div class="section-tag">Projets</div>
+            <h1 class="section-title">
+                Ce que j'ai<br><em>construit</em>
+            </h1>
+            <p>
+                Des projets académiques, personnels et entrepreneuriaux.
+                Chacun raconte une histoire et une leçon apprise.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       RECHERCHE + FILTRES
+  ══════════════════════════════════════ -->
+    <section class="projects-section">
+        <div class="max-w">
+
+            <!-- Barre de recherche -->
+            <div class="search-bar-wrap reveal">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="Rechercher un projet, une technologie…" />
+            </div>
+
+            <!-- Filtres par catégorie -->
+            <div class="projects-filters reveal reveal-d1">
+                <button class="filter-btn active" data-filter="tous">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="embarque">Embarqué</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+
+            <!-- Grille projets -->
+            <div class="projects-full-grid" id="projectsGrid">
+
+                <!-- Projet 1 -->
+                <article class="project-card reveal" data-category="web"
+                    data-keywords="portfolio html css javascript web étudiant">
+                    <div class="project-thumb thumb-terracotta">
+                        <img src="../images/portfolio.png" alt="Portfolio étudiant" class="project-thumb-img" />
+                        <div class="project-thumb-fallback">
+                            <span class="project-icon"></span>
+                        </div>
+                        <span class="project-tag-chip">Web</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Portfolio Étudiant</h3>
+                        <p class="project-desc">
+                            Mon premier site web personnel — une vitrine de mes compétences
+                            et réalisations académiques. Le projet qui m'a donné le goût
+                            du développement front-end.
+                        </p>
+                        <div class="project-techs">
+                            <span class="tech-chip">HTML5</span>
+                            <span class="tech-chip">CSS3</span>
+                            <span class="tech-chip">JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card reveal" data-category="design"
+                    data-keywords="design interface ui ux figma maquette">
+                    <div class="project-thumb thumb-terracotta">
+                        <!-- Remplace src par ../images/photos/projet-design.jpg -->
+                        <img src="../images/Capture d’écran 2026-05-07 210314.png" alt="Projet Design UI"
+                            class="project-thumb-img" />
+                        <div class="project-thumb-fallback">
+                            <span class="project-icon"></span>
+                        </div>
+                        <span class="project-tag-chip">Design</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Maquette UI — Application Web</h3>
+                        <p class="project-desc">
+                            Conception d'une maquette d'application web sur Figma.
+                            Travail sur l'ergonomie, les couleurs et l'expérience utilisateur.
+                        </p>
+                        <div class="project-techs">
+                            <span class="tech-chip">Figma</span>
+                            <span class="tech-chip">UI/UX</span>
+                            <span class="tech-chip">Prototypage</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Projet 5 -->
+                <article class="project-card reveal reveal-d1" data-category="web"
+                    data-keywords="site web html css javascript react front-end">
+                    <div class="project-thumb thumb-sage">
+                        <div class="project-thumb-fallback">
+                            <span class="project-icon">En cours...🌐</span>
+                        </div>
+                        <span class="project-tag-chip">Projet Tutoré</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Site Vitrine — Projet Académique</h3>
+                        <p class="project-desc">
+                            Réalisation d'un site vitrine complet en équipe dans le cadre
+                            d'un projet universitaire.
+                        </p>
+                        <div class="project-techs">
+                            <span class="tech-chip">HTML5</span>
+                            <span class="tech-chip">CSS3</span>
+                            <span class="tech-chip">PHP</span>
+                            <span class="tech-chip">Arduino</span>
+                            <span class="tech-chip">C++</span>
+
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card reveal reveal-d1" data-category="embarque"
+                    data-keywords="poubelle intelligente arduino c++ embarqué capteurs">
+                    <div class="project-thumb thumb-sage">
+                        <!-- Remplace src par ../images/photos/projet-poubelle.jpg -->
+                        <img src="../images/poubelle intelligente.jpeg" alt="Poubelle Intelligente"
+                            class="project-thumb-img" />
+                        <div class="project-thumb-fallback">
+                            <span class="project-icon"></span>
+                        </div>
+                        <span class="project-tag-chip">Embarqué</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Poubelle Intelligente</h3>
+                        <p class="project-desc">
+                            Système embarqué avec capteurs de détection et gestion
+                            automatique des déchets. Mon premier projet hardware —
+                            apprendre en touchant les fils !
+                        </p>
+                        <div class="project-techs">
+                            <span class="tech-chip">C++</span>
+                            <span class="tech-chip">Arduino</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 3 -->
+                <article class="project-card reveal reveal-d2" data-category="business"
+                    data-keywords="scent house parfumerie branding business entrepreneuriat">
+                    <div class="project-thumb thumb-cream">
+                        <!-- Remplace src par ../images/photos/projet-scenthouse.jpg -->
+                        <img src="../images/Logo.png" alt="Scent House" class="project-thumb-img" />
+                        <div class="project-thumb-fallback">
+                            <span class="project-icon"></span>
+                        </div>
+                        <span class="project-tag-chip">Business</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Scent House</h3>
+                        <p class="project-desc">
+                            Lancement de ma première marque de parfumerie. De l'idée
+                            au produit fini — branding, marketing, gestion de stock.
+                            Une aventure qui m'a tout appris sur l'entrepreneuriat.
+                        </p>
+                        <div class="project-techs">
+                            <span class="tech-chip">Branding</span>
+                            <span class="tech-chip">Marketing</span>
+                            <span class="tech-chip">Gestion</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Message aucun résultat -->
+                <div class="no-results" id="noResults" style="display:none;">
+                    <p>😕 Aucun projet ne correspond à ta recherche.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+    <footer id="footer">
+        <div class="footer-brand">
+            <a href="../index.html" class="nav-logo">Alimatou Sadiya DIOUF</a>
+            <p>Informaticienne &amp; Entrepreneuse<br>Dakar, Sénégal 🇸🇳</p>
+        </div>
+        <div class="footer-links-col">
+            <span class="footer-col-title">Réseaux</span>
+            <div class="footer-socials">
+
+                <a href="https://github.com/sakuraaa1002" target="_blank" rel="noopener" class="footer-social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg>
+                </a>
+
+                <a href="https://linkedin.com/in/alimatou-sadiya-diouf" target="_blank" rel="noopener"
+                    class="footer-social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+
+                <a href="mailto:miss.sereree.10@email.com" class="footer-social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M2 7l10 7 10-7" />
+                    </svg>
+                </a>
+
+                <a href="https://www.instagram.com/__sokhna_si__" target="_blank" rel="noopener"
+                    class="footer-social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+
+                <a href="https://wa.me/221756582676" target="_blank" rel="noopener" class="footer-social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Tous droits réservés — Site créé dans le cadre d'un projet académique</p>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════ -->
+
+</body>
+
+</html>
