@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once './config/connexion.php';
+require_once './composants/fonction.php';
+enregistrer_visite($pdo, 'index.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

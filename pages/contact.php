@@ -1,5 +1,8 @@
 <?php
-require '../composants/fonction.php'; ?>
+require '../composants/fonction.php';
+session_start();
+require_once '../config/connexion.php';
+enregistrer_visite($pdo, 'contact.php'); ?>
 <?php
 $erreurs = [];
 $succes = false;
@@ -10,6 +13,10 @@ $sujet = '';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!verifier_token_csrf($_POST['csrf_token'] ?? '')) {
+        $erreurs[] = "Token CSRF invalide. Veuillez réessayer.";
+    } else {
+    }
     // Nettoyage des données
     $prenom = nettoyer_champ($_POST['prenom'] ?? '');
     $nom = nettoyer_champ($_POST['nom'] ?? '');
@@ -38,6 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Si pas d'erreurs, traiter le formulaire (ex: envoyer un email)
     if (empty($erreurs)) {
+        $nom_complet = $prenom . ' ' . $nom;
+        $stmt = $pdo->prepare("INSERT INTO messages_contact (nom, email, message) VALUES (?, ?, ?)");
+        $stmt->execute([$nom_complet, $email, $sujet . '-' . $message]);
+
         // Code pour envoyer l'email ou enregistrer le message
         // ...
 
@@ -206,6 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         <?php endif; ?>
                         <form method="POST" action="">
+                            <input type="hidden" name="csrf_token" value="<?= generer_token_csrf() ?>" />
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="prenom">Prénom</label>

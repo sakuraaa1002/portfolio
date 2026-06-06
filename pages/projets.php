@@ -1,52 +1,18 @@
 <?php
-$projets = [
-    [
-        'titre' => 'Portfolio Étudiant',
-        'description' => "Mon premier site web personnel — une vitrine de mes compétences et réalisations académiques. Le projet qui m'a donné le goût du développement front-end.",
-        'technologies' => ['HTML5', 'CSS3', 'JavaScript'],
-        'categorie' => 'web',
-        'thumb' => 'thumb-terracotta',
-        'chip' => 'Web',
-        'image' => '/Portfolioo1/images/portfolio.png',
-    ],
-    [
-        'titre' => 'Maquette UI — Application Web',
-        'description' => "Conception d'une maquette d'application web sur Figma. Travail sur l'ergonomie, les couleurs et l'expérience utilisateur.",
-        'technologies' => ['Figma', 'UI/UX', 'Prototypage'],
-        'categorie' => 'design',
-        'thumb' => 'thumb-terracotta',
-        'chip' => 'Design',
-        'image' => '/Portfolioo1/images/Capture-ecran.png',
-    ],
-    [
-        'titre' => 'Site Vitrine — Projet Académique',
-        'description' => "Réalisation d'un site vitrine complet en équipe dans le cadre d'un projet universitaire.",
-        'technologies' => ['HTML5', 'CSS3', 'PHP', 'Arduino', 'C++'],
-        'categorie' => 'web',
-        'thumb' => 'thumb-sage',
-        'chip' => 'Projet Tutoré',
-        'icon' => 'En cours...🌐',
-        'image' => null, // Image à venir
-    ],
-    [
-        'titre' => 'Poubelle Intelligente',
-        'description' => "Système embarqué avec capteurs de détection et gestion automatique des déchets. Mon premier projet hardware — apprendre en touchant les fils !",
-        'technologies' => ['C++', 'Arduino'],
-        'categorie' => 'embarque',
-        'thumb' => 'thumb-sage',
-        'chip' => 'Embarqué',
-        'image' => '/Portfolioo1/images/poubelle intelligente.jpeg',
-    ],
-    [
-        'titre' => 'Scent House',
-        'description' => "Lancement de ma première marque de parfumerie. De l'idée au produit fini — branding, marketing, gestion de stock. Une aventure qui m'a tout appris sur l'entrepreneuriat.",
-        'technologies' => ['Branding', 'Marketing', 'Gestion'],
-        'categorie' => 'business',
-        'thumb' => 'thumb-cream',
-        'chip' => 'Business',
-        'image' => '/Portfolioo1/images/Logo.png',
-    ],
-];
+session_start();
+require_once '../config/connexion.php';
+require_once '../composants/fonction.php';
+enregistrer_visite($pdo, 'projets.php');
+//Recherche et affichage des projets
+$recherche = nettoyer_champ($_GET['recherche'] ?? '');
+if (!empty($recherche)) {
+    $stmt = $pdo->prepare("SELECT * FROM projets WHERE titre LIKE ? OR description LIKE ? OR technologies LIKE ? OR ORDER BY date_creation DESC");
+    $likeRecherche = '%' . $recherche . '%';
+    $stmt->execute([$likeRecherche, $likeRecherche, $likeRecherche]);
+} else {
+    $stmt = $pdo->query("SELECT * FROM projets ORDER BY date_creation DESC");
+}
+$projets = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -95,14 +61,16 @@ $projets = [
         <div class="max-w">
 
             <!-- Barre de recherche -->
-            <div class="search-bar-wrap reveal">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.35-4.35" />
-                </svg>
-                <input type="text" id="searchInput" placeholder="Rechercher un projet, une technologie…" />
-            </div>
+            <form action="" method="GET">
+                <div class="search-bar-wrap reveal">
+                    <svg class="search-icon" width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" name="recherche" class="search-input" placeholder="Rechercher un projet..." value="<?= $recherche ?>" />
+                </div>
+            </form>
 
             <!-- Filtres par catégorie -->
             <div class="projects-filters reveal reveal-d1">
@@ -118,11 +86,10 @@ $projets = [
 
                 <!-- Projet 1 -->
                 <?php foreach ($projets as $projet) : ?>
-                    <article class="project-card reveal" data-category="htmlspecialchars($projet['categorie'])?>"
-                        data-keywords="htmlspecialchars($projet['keywords'])?>">
+                    <article class="project-card reveal" data-category="<?= htmlspecialchars($projet['titre']) ?>">
                         <div class="project-thumb <?= htmlspecialchars($projet['thumb']) ?>">
                             <?php if (!empty($projet['image'])) : ?>
-                                <img src="<?= htmlspecialchars($projet['image']) ?>" alt="<?= htmlspecialchars($projet['titre']) ?>" class="project-thumb-img" />
+                                <img src="../images/projets/<?= htmlspecialchars($projet['image']) ?>?> ?>" />
                             <?php endif; ?>
                             <div class="project-thumb-fallback">
                                 <span class="project-icon"> <?= !empty($projet['icon']) ? $projet['icon'] : '' ?></span>
